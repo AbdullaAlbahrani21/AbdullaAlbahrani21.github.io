@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Abdulla Albahrani's portfolio — cybersecurity, full-stack development, and AI systems.">
+<meta name="theme-color" content="#0a0e17">
+<meta property="og:title" content="Abdulla Albahrani — Portfolio">
+<meta property="og:description" content="Cybersecurity graduate and full-stack developer building secure products and AI systems.">
+<meta property="og:type" content="website">
 <title>Abdulla Albahrani — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -24,6 +29,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  ::selection { background: rgba(0,198,255,0.25); color: var(--text-bright); }
 
   body {
     background: var(--bg);
@@ -41,6 +47,15 @@
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,198,255,0.012) 2px, rgba(0,198,255,0.012) 4px);
     pointer-events: none;
     z-index: 9999;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(123,94,167,0.16), transparent 35%);
+    pointer-events: none;
+    z-index: -1;
   }
 
   /* NAV */
@@ -67,7 +82,7 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 48px 80px;
+    padding: 128px 48px 92px;
     position: relative;
     overflow: hidden;
   }
@@ -82,8 +97,32 @@
     background: radial-gradient(circle, rgba(0,198,255,0.07) 0%, transparent 70%);
     top: 50%; left: 60%; transform: translate(-50%, -50%); pointer-events: none;
   }
-  .hero-content { position: relative; max-width: 900px; }
+  .hero-content { position: relative; max-width: 940px; }
   .hero-tag { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(0,198,255,0.24);
+    background: rgba(0,198,255,0.08);
+    color: var(--text-bright);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .hero-badge::before {
+    content: '●';
+    color: var(--green);
+  }
+  .hero-meta {
+    color: var(--text-dim);
+    font-size: 15px;
+    margin-top: 16px;
+    max-width: 700px;
+  }
   .hero-tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
   h1 { font-family: var(--mono); font-size: clamp(40px, 6vw, 72px); font-weight: 700; color: var(--text-bright); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 8px; }
   .hero-title-accent { color: transparent; -webkit-text-stroke: 1px var(--accent); }
@@ -91,10 +130,10 @@
   .hero-desc { max-width: 560px; color: var(--text); font-size: 16px; line-height: 1.8; margin-bottom: 44px; }
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-  .btn-primary { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 12px 28px; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); display: inline-block; }
-  .btn-primary:hover { background: #33d4ff; transform: translateY(-1px); }
-  .btn-ghost { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 11px 28px; border: 1px solid var(--border); color: var(--text); text-decoration: none; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); display: inline-block; }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .btn-primary { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 12px 28px; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700; transition: all 0.2s; border-radius: 999px; display: inline-block; box-shadow: 0 10px 24px rgba(0,198,255,0.18); }
+  .btn-primary:hover { background: #33d4ff; transform: translateY(-1px); box-shadow: 0 14px 28px rgba(0,198,255,0.28); }
+  .btn-ghost { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 11px 28px; border: 1px solid var(--border); color: var(--text); text-decoration: none; transition: all 0.2s; border-radius: 999px; display: inline-block; background: rgba(255,255,255,0.02); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); background: rgba(0,198,255,0.06); }
 
   /* SECTIONS */
   section { padding: 100px 48px; }
@@ -106,8 +145,8 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; }
   .about-text p { color: var(--text); line-height: 1.9; margin-bottom: 20px; }
   .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .skill-card { background: var(--bg2); border: 1px solid var(--border); padding: 20px; transition: border-color 0.2s; }
-  .skill-card:hover { border-color: var(--accent); }
+  .skill-card { background: var(--bg2); border: 1px solid var(--border); padding: 20px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; border-radius: 16px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 10px 25px rgba(0,0,0,0.16); }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 16px 30px rgba(0,0,0,0.22); }
   .skill-card-label { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 10px; }
   .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tag { font-family: var(--mono); font-size: 11px; padding: 3px 8px; background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
@@ -133,15 +172,17 @@
     padding: 32px;
     position: relative;
     overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     cursor: default;
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.16);
   }
   .project-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
     opacity: 0; transition: opacity 0.25s;
   }
-  .project-card:hover { border-color: var(--card-accent, var(--accent)); transform: translateY(-3px); }
+  .project-card:hover { border-color: var(--card-accent, var(--accent)); transform: translateY(-3px); box-shadow: 0 20px 45px rgba(0,0,0,0.24); }
   .project-card:hover::before { opacity: 1; }
   .project-card.uni { --card-accent: var(--green); }
   .project-card.work { --card-accent: var(--accent); }
@@ -177,6 +218,7 @@
     letter-spacing: 0.08em;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    border-radius: 999px;
   }
   .project-btn:hover { background: var(--card-accent, var(--accent)); color: var(--bg); }
 
@@ -200,6 +242,9 @@
     max-width: 860px;
     position: relative;
     animation: modalIn 0.25s ease;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
   }
 
   @keyframes modalIn {
@@ -378,8 +423,8 @@
   .contact-email { font-family: var(--mono); font-size: clamp(18px, 3vw, 28px); color: var(--text-bright); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; display: inline-block; margin-bottom: 40px; }
   .contact-email:hover { color: var(--accent); border-color: var(--accent); }
   .social-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-  .social-link { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; padding: 10px 20px; border: 1px solid var(--border); transition: all 0.2s; }
-  .social-link:hover { border-color: var(--accent); color: var(--accent); }
+  .social-link { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; padding: 10px 20px; border: 1px solid var(--border); transition: all 0.2s; border-radius: 999px; background: rgba(255,255,255,0.02); }
+  .social-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); background: rgba(0,198,255,0.06); }
 
   /* FOOTER */
   footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
@@ -435,11 +480,13 @@
   <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="hero-tag fade-in fade-in-1">CYBERSECURITY · FULL-STACK · ML</div>
+    <div class="hero-badge fade-in fade-in-2">Open to opportunities · Based in Bahrain</div>
     <h1 class="fade-in fade-in-2">Abdulla<br><span class="hero-title-accent">Albahrani</span></h1>
     <div class="hero-sub fade-in fade-in-3">&lt; AI_SYSTEMS_DEVELOPER /&gt;<span class="cursor"></span></div>
     <p class="hero-desc fade-in fade-in-3">
-      Cybersecurity graduate and full-stack developer. I build mobile applications, security tools, and ML systems — with a security-first mindset baked into every layer.
+      Cybersecurity graduate and full-stack developer. I build secure mobile apps, practical security tools, and AI-driven systems with a strong focus on reliability and user experience.
     </p>
+    <div class="hero-meta fade-in fade-in-4">Currently building products at the intersection of security, software, and intelligent automation.</div>
     <div class="hero-ctas fade-in fade-in-4">
       <a href="#projects" class="btn-primary">VIEW PROJECTS</a>
       <a href="https://github.com/AbdullaAlbahrani21" target="_blank" class="btn-ghost">GITHUB ↗</a>
