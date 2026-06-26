@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdulla Albahrani — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e17;
+    --bg2: #0f1521;
+    --bg3: #141c2e;
+    --border: #1e2d47;
+    --accent: #00c6ff;
+    --accent2: #7b5ea7;
+    --green: #00e5a0;
+    --text: #c9d1e0;
+    --text-dim: #5a6a82;
+    --text-bright: #e8edf5;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,198,255,0.012) 2px, rgba(0,198,255,0.012) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(10,14,23,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.05em; }
+  .nav-logo span { color: var(--text-dim); }
+  nav ul { display: flex; gap: 36px; list-style: none; }
+  nav a { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(0,198,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,198,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,198,255,0.07) 0%, transparent 70%);
+    top: 50%; left: 60%; transform: translate(-50%, -50%); pointer-events: none;
+  }
+  .hero-content { position: relative; max-width: 900px; }
+  .hero-tag { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .hero-tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
+  h1 { font-family: var(--mono); font-size: clamp(40px, 6vw, 72px); font-weight: 700; color: var(--text-bright); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .hero-title-accent { color: transparent; -webkit-text-stroke: 1px var(--accent); }
+  .hero-sub { font-family: var(--mono); font-size: clamp(16px, 2vw, 22px); color: var(--accent2); margin-bottom: 28px; font-weight: 300; }
+  .hero-desc { max-width: 560px; color: var(--text); font-size: 16px; line-height: 1.8; margin-bottom: 44px; }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 12px 28px; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); display: inline-block; }
+  .btn-primary:hover { background: #33d4ff; transform: translateY(-1px); }
+  .btn-ghost { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; padding: 11px 28px; border: 1px solid var(--border); color: var(--text); text-decoration: none; transition: all 0.2s; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); display: inline-block; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section { padding: 100px 48px; }
+  .section-label { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent); opacity: 0.4; }
+  h2 { font-family: var(--mono); font-size: clamp(26px, 3vw, 38px); color: var(--text-bright); font-weight: 700; margin-bottom: 60px; letter-spacing: -0.02em; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; }
+  .about-text p { color: var(--text); line-height: 1.9; margin-bottom: 20px; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .skill-card { background: var(--bg2); border: 1px solid var(--border); padding: 20px; transition: border-color 0.2s; }
+  .skill-card:hover { border-color: var(--accent); }
+  .skill-card-label { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 10px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: var(--mono); font-size: 11px; padding: 3px 8px; background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+
+  /* PROJECTS */
+  .projects-section { background: var(--bg2); }
+  .project-category { margin-bottom: 70px; }
+  .cat-header { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+  .cat-badge { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; padding: 5px 12px; border: 1px solid; }
+  .cat-badge.uni { border-color: var(--green); color: var(--green); }
+  .cat-badge.work { border-color: var(--accent); color: var(--accent); }
+  .cat-badge.reboot { border-color: var(--accent2); color: var(--accent2); }
+  .cat-title { font-family: var(--mono); font-size: 13px; color: var(--text-dim); letter-spacing: 0.06em; }
+
+  .projects-row { display: grid; gap: 20px; }
+  .projects-row.cols-2 { grid-template-columns: 1fr 1fr; }
+  .projects-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .projects-row.cols-1 { grid-template-columns: 1fr; }
+
+  .project-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+    cursor: default;
+  }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .project-card:hover { border-color: var(--card-accent, var(--accent)); transform: translateY(-3px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-card.uni { --card-accent: var(--green); }
+  .project-card.work { --card-accent: var(--accent); }
+  .project-card.reboot { --card-accent: var(--accent2); }
+
+  /* Project marker — replaces emoji */
+  .project-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border: 1px solid var(--card-accent, var(--accent));
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--card-accent, var(--accent));
+    margin-bottom: 18px;
+    letter-spacing: 0.05em;
+  }
+
+  .project-name { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--text-bright); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .project-desc { color: var(--text); font-size: 14px; line-height: 1.75; margin-bottom: 20px; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+  .stack-tag { font-family: var(--mono); font-size: 10px; padding: 3px 9px; background: var(--bg2); color: var(--text-dim); border: 1px solid var(--border); letter-spacing: 0.05em; }
+
+  .project-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--card-accent, var(--accent));
+    background: none;
+    border: 1px solid var(--card-accent, var(--accent));
+    padding: 8px 18px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .project-btn:hover { background: var(--card-accent, var(--accent)); color: var(--bg); }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 14, 0.92);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 40px 24px;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .modal {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 860px;
+    position: relative;
+    animation: modalIn 0.25s ease;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-header {
+    padding: 28px 36px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .modal-close {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 16px;
+    width: 36px; height: 36px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+  .modal-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; padding: 3px 10px; border: 1px solid; margin-bottom: 10px; display: inline-block; }
+  .modal-cat.uni { border-color: var(--green); color: var(--green); }
+  .modal-cat.work { border-color: var(--accent); color: var(--accent); }
+  .modal-cat.reboot { border-color: var(--accent2); color: var(--accent2); }
+
+  .modal-title { font-family: var(--mono); font-size: 24px; font-weight: 700; color: var(--text-bright); letter-spacing: -0.01em; }
+
+  .modal-body { padding: 32px 36px; }
+
+  .modal-section-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 14px;
+    margin-top: 30px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .modal-section-title:first-child { margin-top: 0; }
+
+  .modal-desc { color: var(--text); font-size: 14px; line-height: 1.85; }
+
+  .modal-features { list-style: none; margin-top: 10px; }
+  .modal-features li { font-size: 14px; color: var(--text); padding: 5px 0 5px 18px; position: relative; }
+  .modal-features li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); }
+
+  .modal-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .modal-stack .stack-tag { font-size: 11px; padding: 5px 12px; }
+
+  /* Screenshot grid */
+  .screenshot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .screenshot-slot {
+    aspect-ratio: 16/10;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    padding: 10px;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+  }
+  .screenshot-slot:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  }
+  .screenshot-slot svg { opacity: 0.3; }
+
+  .screenshot-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: var(--bg2);
+    border-radius: 8px;
+    cursor: zoom-in;
+  }
+
+  .image-preview-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 12, 0.95);
+    z-index: 1300;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    backdrop-filter: blur(6px);
+  }
+  .image-preview-overlay.open { display: flex; }
+
+  .image-preview-card {
+    position: relative;
+    width: min(1100px, 100%);
+    max-height: 90vh;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+  .image-preview-card img {
+    display: block;
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    background: var(--bg);
+  }
+  .image-preview-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    background: rgba(10,14,23,0.9);
+    color: var(--text-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 16px;
+  }
+  .image-preview-close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .modal-footer {
+    padding: 20px 36px 28px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* EXPERIENCE */
+  .timeline { max-width: 760px; }
+  .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 32px; margin-bottom: 48px; position: relative; }
+  .timeline-item::after { content: ''; position: absolute; left: 119px; top: 8px; bottom: -40px; width: 1px; background: var(--border); }
+  .timeline-item:last-child::after { display: none; }
+  .timeline-date { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em; padding-top: 2px; text-align: right; }
+  .timeline-body { padding-left: 24px; position: relative; }
+  .timeline-body::before { content: ''; position: absolute; left: -5px; top: 7px; width: 10px; height: 10px; border: 2px solid var(--accent); background: var(--bg); border-radius: 50%; }
+  .timeline-role { font-family: var(--mono); font-size: 16px; color: var(--text-bright); font-weight: 600; margin-bottom: 4px; }
+  .timeline-company { font-size: 13px; color: var(--accent); margin-bottom: 14px; font-family: var(--mono); }
+  .timeline-body ul { list-style: none; }
+  .timeline-body ul li { font-size: 14px; color: var(--text); padding: 5px 0 5px 16px; position: relative; }
+  .timeline-body ul li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 800px; }
+  .edu-card { background: var(--bg2); border: 1px solid var(--border); padding: 28px; transition: border-color 0.2s; }
+  .edu-card:hover { border-color: var(--accent); }
+  .edu-school { font-family: var(--mono); font-size: 15px; color: var(--text-bright); font-weight: 600; margin-bottom: 6px; }
+  .edu-degree { font-size: 13px; color: var(--text); margin-bottom: 12px; }
+  .edu-date { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.08em; }
+
+  /* CONTACT */
+  .contact-section { text-align: center; padding: 80px 48px 100px; position: relative; }
+  .contact-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,198,255,0.04) 0%, transparent 70%); pointer-events: none; }
+  .contact-email { font-family: var(--mono); font-size: clamp(18px, 3vw, 28px); color: var(--text-bright); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s; display: inline-block; margin-bottom: 40px; }
+  .contact-email:hover { color: var(--accent); border-color: var(--accent); }
+  .social-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+  .social-link { font-family: var(--mono); font-size: 12px; color: var(--text-dim); text-decoration: none; letter-spacing: 0.08em; padding: 10px 20px; border: 1px solid var(--border); transition: all 0.2s; }
+  .social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
+  footer span { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 0.06em; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.6s ease forwards; }
+  .fade-in-1 { animation-delay: 0.1s; opacity: 0; }
+  .fade-in-2 { animation-delay: 0.25s; opacity: 0; }
+  .fade-in-3 { animation-delay: 0.4s; opacity: 0; }
+  .fade-in-4 { animation-delay: 0.55s; opacity: 0; }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+  .cursor { display: inline-block; width: 3px; height: 1em; background: var(--accent); vertical-align: middle; animation: blink 1s step-end infinite; margin-left: 4px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    section, .hero { padding: 80px 24px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-row.cols-2 { grid-template-columns: 1fr; }
+    .projects-row.cols-3 { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    .timeline-item::after { display: none; }
+    .timeline-date { text-align: left; }
+    footer { flex-direction: column; gap: 10px; }
+    .modal-header { padding: 20px 20px 16px; }
+    .modal-body { padding: 20px; }
+    .modal-footer { padding: 12px 20px 20px; }
+    .screenshot-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>~/</span>abdulla_albahrani</div>
+  <ul>
+    <li><a href="#about">about</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#education">education</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag fade-in fade-in-1">CYBERSECURITY · FULL-STACK · ML</div>
+    <h1 class="fade-in fade-in-2">Abdulla<br><span class="hero-title-accent">Albahrani</span></h1>
+    <div class="hero-sub fade-in fade-in-3">&lt; AI_SYSTEMS_DEVELOPER /&gt;<span class="cursor"></span></div>
+    <p class="hero-desc fade-in fade-in-3">
+      Cybersecurity graduate and full-stack developer. I build mobile applications, security tools, and ML systems — with a security-first mindset baked into every layer.
+    </p>
+    <div class="hero-ctas fade-in fade-in-4">
+      <a href="#projects" class="btn-primary">VIEW PROJECTS</a>
+      <a href="https://github.com/AbdullaAlbahrani21" target="_blank" class="btn-ghost">GITHUB ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">ABOUT.MD</div>
+  <h2>Who I Am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a Cybersecurity graduate from Bahrain Polytechnic, currently enrolled in the Reboot Full-Stack Program. I combine a security background with practical dev skills — building everything from React Native apps backed by Firebase to Raspberry Pi security devices and machine learning models for threat detection.</p>
+      <p>I've worked at Risk Associates in cybersecurity consulting, and participated in Raincode's MVP Program where I shipped SpaceRoom — a full-stack space booking platform — from planning to production.</p>
+      <p>I'm currently expanding into AI-assisted development and building tools that sit at the intersection of security and software.</p>
+    </div>
+    <div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-card-label">MOBILE · FRONTEND</div>
+          <div class="skill-tags">
+            <span class="tag">React Native</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Next.js</span><span class="tag">Tailwind</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">BACKEND · LANGUAGES</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">Go</span><span class="tag">Node.js</span><span class="tag">C/C++</span><span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">CLOUD · DEVOPS</div>
+          <div class="skill-tags">
+            <span class="tag">Firebase</span><span class="tag">Firestore</span><span class="tag">Git</span><span class="tag">GitHub</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-label">SECURITY · DATA</div>
+          <div class="skill-tags">
+            <span class="tag">Linux</span><span class="tag">ClamAV</span><span class="tag">Networking</span><span class="tag">ML / scikit-learn</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+  <div class="section-label">PROJECTS.SH</div>
+  <h2>Things I've Built</h2>
+
+  <!-- UNIVERSITY -->
+  <div class="project-category">
+    <div class="cat-header">
+      <span class="cat-badge uni">UNIVERSITY</span>
+      <span class="cat-title">// Bahrain Polytechnic — Cybersecurity</span>
+    </div>
+    <div class="projects-row cols-2">
+      <div class="project-card uni">
+        <div class="project-marker">ML</div>
+        <div class="project-name">DDoS Attack Detector</div>
+        <p class="project-desc">Machine learning system trained on a large labelled network traffic dataset to classify and detect DDoS attacks in real time using multiple algorithms.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span><span class="stack-tag">scikit-learn</span><span class="stack-tag">pandas</span><span class="stack-tag">ML</span><span class="stack-tag">Cybersecurity</span>
+        </div>
+        <button class="project-btn" onclick="openModal('ddos')">VIEW DETAILS →</button>
+      </div>
+      <div class="project-card uni">
+        <div class="project-marker">Pi</div>
+        <div class="project-name">USB Malware Scanner</div>
+        <p class="project-desc">Raspberry Pi-based security device that scans inserted USB drives for malware, quarantines threats, and sends automated PDF reports via email.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Raspberry Pi</span><span class="stack-tag">Python</span><span class="stack-tag">ClamAV</span><span class="stack-tag">Linux</span><span class="stack-tag">SMTP</span>
+        </div>
+        <button class="project-btn" onclick="openModal('usb')">VIEW DETAILS →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <div class="project-category">
+    <div class="cat-header">
+      <span class="cat-badge work">WORK</span>
+      <span class="cat-title">// Raincode MVP Program</span>
+    </div>
+    <div class="projects-row cols-1">
+      <div class="project-card work">
+        <div class="project-marker">SR</div>
+        <div class="project-name">SpaceRoom</div>
+        <p class="project-desc">Full-stack space booking platform — React Native mobile app for customers and a Next.js web dashboard for admins and venue owners, all backed by Firebase with real-time data and geolocation.</p>
+        <div class="project-stack">
+          <span class="stack-tag">React Native</span><span class="stack-tag">Next.js 14</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Firebase</span><span class="stack-tag">Firestore</span><span class="stack-tag">Tailwind CSS</span>
+        </div>
+        <button class="project-btn" onclick="openModal('spaceroom')">VIEW DETAILS →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- REBOOT -->
+  <div class="project-category">
+    <div class="cat-header">
+      <span class="cat-badge reboot">REBOOT</span>
+      <span class="cat-title">// Reboot Coding Institute — Full-Stack Program</span>
+    </div>
+    <div class="projects-row cols-3">
+      <div class="project-card reboot">
+        <div class="project-marker">BB</div>
+        <div class="project-name">Brick Breaker</div>
+        <p class="project-desc">Browser-based brick breaker game built from scratch in vanilla JavaScript — no libraries, no frameworks. Full collision detection, scoring, and level progression on HTML5 Canvas.</p>
+        <div class="project-stack">
+          <span class="stack-tag">HTML5 Canvas</span><span class="stack-tag">Vanilla JS</span><span class="stack-tag">CSS</span>
+        </div>
+        <button class="project-btn" onclick="openModal('brickbreaker')">VIEW DETAILS →</button>
+      </div>
+      <div class="project-card reboot">
+        <div class="project-marker">FR</div>
+        <div class="project-name">Forum</div>
+        <p class="project-desc">Full-stack web forum with user authentication, post/comment system, likes and dislikes, category filtering, and Docker containerization — backed by SQLite.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Go</span><span class="stack-tag">SQLite</span><span class="stack-tag">HTML</span><span class="stack-tag">Docker</span><span class="stack-tag">bcrypt</span>
+        </div>
+        <button class="project-btn" onclick="openModal('forum')">VIEW DETAILS →</button>
+      </div>
+      <div class="project-card reboot">
+        <div class="project-marker">LI</div>
+        <div class="project-name">Lem-in</div>
+        <p class="project-desc">Pathfinding simulation in Go that moves ants through a colony in the fewest possible turns — solving graph traversal, flow optimization, and multi-path routing from scratch.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Go</span><span class="stack-tag">Graph Algorithms</span><span class="stack-tag">BFS</span><span class="stack-tag">Pathfinding</span>
+        </div>
+        <button class="project-btn" onclick="openModal('lemin')">VIEW DETAILS →</button>
+      </div>
+      <div class="project-card reboot">
+        <div class="project-marker">NC</div>
+        <div class="project-name">Net-Cat</div>
+        <p class="project-desc">TCP group chat server built in Go — recreates NetCat's server-client architecture with concurrent connections, goroutines, mutexes, and timestamped message history.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Go</span><span class="stack-tag">TCP</span><span class="stack-tag">Goroutines</span><span class="stack-tag">Concurrency</span>
+        </div>
+        <button class="project-btn" onclick="openModal('netcat')">VIEW DETAILS →</button>
+      </div>
+      <div class="project-card reboot">
+        <div class="project-marker">GT</div>
+        <div class="project-name">Groupie Tracker</div>
+        <p class="project-desc">Data-driven website built in Go that consumes a live music API — displaying bands, concert locations, dates, and relations through a clean web interface with client-server event handling.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Go</span><span class="stack-tag">REST API</span><span class="stack-tag">HTML</span><span class="stack-tag">JSON</span><span class="stack-tag">Client-Server</span>
+        </div>
+        <button class="project-btn" onclick="openModal('groupietracker')">VIEW DETAILS →</button>
+      </div>
+      <div class="project-card reboot">
+        <div class="project-marker">GR</div>
+        <div class="project-name">go-reloaded</div>
+        <p class="project-desc">Text auto-correction and completion tool in Go that processes files to apply transformations — hex/binary conversion, case changes, punctuation fixing, and grammar corrections.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Go</span><span class="stack-tag">String Processing</span><span class="stack-tag">File I/O</span>
+        </div>
+        <button class="project-btn" onclick="openModal('goreloaded')">VIEW DETAILS →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">IMPACT.LOG</div>
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">02/2026<br>→ 06/2026</div>
+      <div class="timeline-body">
+        <div class="timeline-role">MVP Program Participant</div>
+        <div class="timeline-company">Raincode · Manama, Bahrain</div>
+        <ul>
+          <li>Selected from a competitive pool to build a full-cycle mobile application (SpaceRoom) from planning to deployment</li>
+          <li>Delivered real-time booking and geolocation features as part of a collaborative team, shipping a production-ready app within the program timeline</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">07/2024<br>→ 08/2024</div>
+      <div class="timeline-body">
+        <div class="timeline-role">Cybersecurity Trainee</div>
+        <div class="timeline-company">Risk Associates · Manama, Bahrain</div>
+        <ul>
+          <li>Assisted the cybersecurity team delivering security services to financial institution clients, with hands-on exposure to threat assessment and risk management</li>
+          <li>Supported internal documentation and processes, contributing to a more organized workflow</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" style="background: var(--bg2);">
+  <div class="section-label">TIMELINE.YML</div>
+  <h2>Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-school">Bahrain Polytechnic</div>
+      <div class="edu-degree">Bachelor's Degree · Cybersecurity</div>
+      <div class="edu-date">GRADUATED 05/2026</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-school">Reboot Coding Institute</div>
+      <div class="edu-degree">Full-Stack Development Program</div>
+      <div class="edu-date">08/2025 → 08/2027</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label" style="justify-content: center; margin-bottom: 20px;">CONTACT.SH</div>
+  <h2 style="margin-bottom: 16px;">Get In Touch</h2>
+  <p style="color: var(--text-dim); margin-bottom: 36px; font-size: 15px;">Open to new opportunities, collaborations, or just a chat about tech.</p>
+  <a href="mailto:abdulla963isa@gmail.com" class="contact-email">abdulla963isa@gmail.com</a>
+  <div class="social-links">
+    <a href="https://github.com/AbdullaAlbahrani21" target="_blank" class="social-link">GITHUB ↗</a>
+    <a href="tel:+97338483032" class="social-link">+973 38483032</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Abdulla Albahrani</span>
+  <span>Built with HTML · CSS · JS</span>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════ -->
+
+<!-- MODAL: DDoS Detector -->
+<div class="modal-overlay" id="modal-ddos" onclick="overlayClick(event, 'ddos')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat uni">UNIVERSITY</span>
+        <div class="modal-title">DDoS Attack Detector</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('ddos')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A machine learning system built to detect and classify DDoS (Distributed Denial of Service) attacks by learning patterns from a large labelled network traffic dataset. The project explored the full ML pipeline — from data cleaning and feature engineering through to model training, evaluation, and comparison.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Trained and tested multiple classification algorithms — including Decision Trees, Random Forest, and SVM</li>
+        <li>Evaluated models using accuracy, precision, recall, and F1-score metrics</li>
+        <li>Processed and cleaned a large real-world network traffic dataset</li>
+        <li>Compared algorithm performance to identify the most effective approach for DDoS detection</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Python</span><span class="stack-tag">scikit-learn</span><span class="stack-tag">pandas</span><span class="stack-tag">NumPy</span><span class="stack-tag">Matplotlib</span><span class="stack-tag">Jupyter Notebook</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/DDos1.png" alt="DDoS detection model performance chart">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/DDos2.png" alt="DDoS confusion matrix and model evaluation">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/ddos-ml-project.git" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: USB Malware Scanner -->
+<div class="modal-overlay" id="modal-usb" onclick="overlayClick(event, 'usb')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat uni">UNIVERSITY</span>
+        <div class="modal-title">USB Malware Scanner</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('usb')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A portable hardware-software security device built on a Raspberry Pi that automatically detects and responds to USB drives being inserted. The device scans the drive for malware, isolates any threats it finds, generates a structured PDF report, and dispatches an automated email alert — delivering a clear safe/unsafe verdict without any manual intervention.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Auto-detects USB insertion events using Linux udev rules</li>
+        <li>Scans the entire drive with ClamAV antivirus engine</li>
+        <li>Quarantines infected files before they can execute</li>
+        <li>Generates a detailed PDF report of scan results</li>
+        <li>Sends automated email alerts with the report attached</li>
+        <li>Runs headlessly — no monitor or keyboard required</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Raspberry Pi</span><span class="stack-tag">Python</span><span class="stack-tag">ClamAV</span><span class="stack-tag">Linux / udev</span><span class="stack-tag">SMTP</span><span class="stack-tag">ReportLab (PDF)</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Raspberry1.jpg" alt="USB malware scanner hardware setup screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Raspberry2.png" alt="USB malware scanner alert or scan screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Raspberry3.png" alt="USB malware scanner report screenshot">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/usb-malware-system" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: SpaceRoom (no GitHub link) -->
+<div class="modal-overlay" id="modal-spaceroom" onclick="overlayClick(event, 'spaceroom')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat work">WORK — RAINCODE MVP PROGRAM</span>
+        <div class="modal-title">SpaceRoom</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('spaceroom')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">SpaceRoom is a full-stack space booking platform built during the Raincode MVP Program. It consists of a React Native mobile app for end customers and a Next.js web dashboard for admins and venue owners — all backed by Firebase. The project went from planning to a production-ready app within the program timeline as part of a collaborative team.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Slot-based booking with real-time availability — fully booked spaces dim automatically</li>
+        <li>Geolocation support to find nearby spaces</li>
+        <li>Multi-role system: customer, venue owner, and admin portals</li>
+        <li>Owner dashboard with real-time booking alerts and analytics (revenue, bookings over time)</li>
+        <li>Admin approval workflow for venue and space edits submitted by owners</li>
+        <li>In-app notification centre for all roles</li>
+        <li>Booking history, favourites list, and profile management</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">React Native 0.84</span><span class="stack-tag">Next.js 14</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Firebase Auth</span><span class="stack-tag">Firestore</span><span class="stack-tag">Tailwind CSS</span><span class="stack-tag">React Navigation 7</span><span class="stack-tag">recharts</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/spaceroom1.png" alt="SpaceRoom app screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/spaceroom2.png" alt="SpaceRoom dashboard screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/spaceroom3.png" alt="SpaceRoom booking interface screenshot">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/spaceroom" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Brick Breaker -->
+<div class="modal-overlay" id="modal-brickbreaker" onclick="overlayClick(event, 'brickbreaker')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">Brick Breaker</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('brickbreaker')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A fully browser-based Brick Breaker game built from scratch using vanilla JavaScript and the HTML5 Canvas API — no external libraries or frameworks. Every mechanic, from physics to rendering, is implemented manually as part of the Reboot Full-Stack Program.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Smooth 60fps game loop using requestAnimationFrame</li>
+        <li>Precise collision detection between ball, bricks, paddle, and walls</li>
+        <li>Score tracking and level progression</li>
+        <li>Keyboard and mouse/touch paddle control</li>
+        <li>Game state management — start, play, pause, game over, win</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">HTML5 Canvas</span><span class="stack-tag">Vanilla JavaScript</span><span class="stack-tag">CSS3</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/game1.png" alt="Brick Breaker gameplay screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/game2.png" alt="Brick Breaker game over screen screenshot">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL: Forum -->
+<div class="modal-overlay" id="modal-forum" onclick="overlayClick(event, 'forum')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">Forum</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('forum')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A full-stack web forum built entirely in Go — no frontend frameworks allowed. Users can register, log in, create posts with categories, comment, and like or dislike content. The whole application is containerized with Docker, backed by SQLite, and implements session-based authentication with encrypted passwords.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>User registration and login with session cookies and bcrypt password encryption</li>
+        <li>Post creation with one or more categories (subforum-style filtering)</li>
+        <li>Comments on posts, visible to all users including guests</li>
+        <li>Like and dislike system for posts and comments (registered users only)</li>
+        <li>Filter posts by category, posts you created, or posts you liked</li>
+        <li>Full Docker containerization for consistent deployment</li>
+        <li>Proper HTTP status codes (200, 400, 404, 500) throughout</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Go</span><span class="stack-tag">SQLite</span><span class="stack-tag">HTML Templates</span><span class="stack-tag">Docker</span><span class="stack-tag">bcrypt</span><span class="stack-tag">UUID</span><span class="stack-tag">Sessions & Cookies</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Forum1.png" alt="Forum homepage screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Forum2.png" alt="Forum post page screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Forum3.png" alt="Forum login and category view screenshot">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/forum-image-upload" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Lem-in -->
+<div class="modal-overlay" id="modal-lemin" onclick="overlayClick(event, 'lemin')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">Lem-in</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('lemin')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A digital ant farm simulation in Go. Given a colony map of rooms and tunnels, the program finds the optimal set of paths to move N ants from a start room to an end room in the fewest possible turns — avoiding collisions and traffic jams along the way. The challenge is both algorithmic (graph pathfinding) and logistical (multi-agent flow optimization).</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Parses a custom colony file format defining rooms, tunnels, and ant count</li>
+        <li>Finds multiple non-conflicting paths simultaneously using BFS-based algorithms</li>
+        <li>Schedules ant movement to minimize total turns — not just shortest single path</li>
+        <li>Each room holds at most one ant per turn (except start and end)</li>
+        <li>Handles all invalid input cases: duplicate rooms, unknown links, missing start/end, self-links</li>
+        <li>Outputs every ant's movement per turn in a clean, structured format</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Go</span><span class="stack-tag">Graph Theory</span><span class="stack-tag">BFS</span><span class="stack-tag">Multi-path Routing</span><span class="stack-tag">Flow Optimization</span>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/lem-in" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Net-Cat -->
+<div class="modal-overlay" id="modal-netcat" onclick="overlayClick(event, 'netcat')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">Net-Cat</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('netcat')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A Go reimplementation of the classic NetCat utility, built as a multi-client TCP group chat server. The server handles up to 10 simultaneous connections, broadcasts messages to all connected clients, and maintains a full message history that new joiners receive on connection. All concurrency is handled with goroutines and mutexes.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>TCP server that accepts up to 10 concurrent client connections</li>
+        <li>Clients choose a username on join — empty names are rejected</li>
+        <li>All messages timestamped in the format [YYYY-MM-DD HH:MM:SS][name]</li>
+        <li>New clients receive the full previous message history on connect</li>
+        <li>Server broadcasts join and leave notifications to all active clients</li>
+        <li>Empty messages from clients are not broadcast</li>
+        <li>Goroutines + mutexes ensure safe concurrent access to shared state</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Go</span><span class="stack-tag">TCP Networking</span><span class="stack-tag">Goroutines</span><span class="stack-tag">Mutexes</span><span class="stack-tag">Channels</span><span class="stack-tag">net package</span>
+      </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/net-cat" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Groupie Tracker -->
+<div class="modal-overlay" id="modal-groupietracker" onclick="overlayClick(event, 'groupietracker')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">Groupie Tracker</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('groupietracker')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A data-driven website built in Go that consumes a live music API to display information about bands and artists. The API provides four interconnected data sources — artists, locations, dates, and relations — which are fetched, parsed, and presented through a clean web interface. The project focuses on client-server communication, where user actions on the frontend trigger requests to the Go backend which fetches and returns live data.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Consumes a live REST API with four linked endpoints: artists, locations, dates, and relations</li>
+        <li>Displays band info including members, first album date, and activity start year</li>
+        <li>Shows upcoming and past concert locations and dates per artist</li>
+        <li>Client-server event handling — user actions trigger backend API calls and return fresh data</li>
+        <li>Full error handling — server never crashes on bad data or failed requests</li>
+        <li>Built with only standard Go packages — no external frameworks</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Go</span><span class="stack-tag">REST API</span><span class="stack-tag">JSON</span><span class="stack-tag">HTML Templates</span><span class="stack-tag">HTTP</span><span class="stack-tag">Client-Server</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/groupie-tracker1.png" alt="Groupie Tracker dashboard preview">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/groupie-tracker2.png" alt="Groupie Tracker artist details preview">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/groupie-tracker" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: go-reloaded -->
+<div class="modal-overlay" id="modal-goreloaded" onclick="overlayClick(event, 'goreloaded')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">go-reloaded</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('goreloaded')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A command-line text transformation tool written in Go. It reads an input file, applies a set of rules to modify and auto-correct the text, and writes the result to an output file. The tool handles number base conversion, case transformations, punctuation formatting, quote normalization, and English grammar corrections.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Converts hex and binary numbers to decimal inline — e.g. <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">1E (hex)</code> becomes <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">30</code></li>
+        <li>Case transformations: (up), (low), (cap) with optional word count — e.g. <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">(up, 3)</code></li>
+        <li>Punctuation normalization — commas, periods, exclamation marks snapped to previous word</li>
+        <li>Smart quote handling — strips extra spaces inside single-quote pairs</li>
+        <li>Grammar correction — converts "a" to "an" before vowels and words starting with h</li>
+        <li>Handles grouped punctuation like <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">...</code> and <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">!?</code> correctly</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Go</span><span class="stack-tag">String Manipulation</span><span class="stack-tag">File I/O</span><span class="stack-tag">Text Processing</span>
+      </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/go-reloaded" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<div class="image-preview-overlay" id="image-preview-overlay" onclick="closeImagePreview()">
+  <div class="image-preview-card" onclick="event.stopPropagation()">
+    <button class="image-preview-close" onclick="closeImagePreview()" aria-label="Close preview">✕</button>
+    <img id="image-preview-img" src="" alt="Screenshot preview">
+  </div>
+</div>
+
+<script>
+  function openModal(id) {
+    const el = document.getElementById('modal-' + id);
+    el.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id) {
+    const el = document.getElementById('modal-' + id);
+    el.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function overlayClick(e, id) {
+    if (e.target === e.currentTarget) closeModal(id);
+  }
+
+  function openImagePreview(img) {
+    const overlay = document.getElementById('image-preview-overlay');
+    const previewImage = document.getElementById('image-preview-img');
+    previewImage.src = img.src;
+    previewImage.alt = img.alt || 'Screenshot preview';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeImagePreview() {
+    const overlay = document.getElementById('image-preview-overlay');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('screenshot-image')) {
+      openImagePreview(e.target);
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(function(el) {
+        el.classList.remove('open');
+      });
+      const preview = document.getElementById('image-preview-overlay');
+      if (preview.classList.contains('open')) {
+        closeImagePreview();
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
