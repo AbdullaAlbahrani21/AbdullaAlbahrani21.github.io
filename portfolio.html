@@ -613,6 +613,15 @@
         <button class="project-btn" onclick="openModal('forum')">VIEW DETAILS →</button>
       </div>
       <div class="project-card reboot">
+        <div class="project-marker">RT</div>
+        <div class="project-name">Real-Time Forum</div>
+        <p class="project-desc">A modern real-time discussion app with live updates, threaded conversations, and a polished interface for community interaction and instant engagement.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Real-Time</span><span class="stack-tag">WebSockets</span><span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span>
+        </div>
+        <button class="project-btn" onclick="openModal('realtimeforum')">VIEW DETAILS →</button>
+      </div>
+      <div class="project-card reboot">
         <div class="project-marker">LI</div>
         <div class="project-name">Lem-in</div>
         <p class="project-desc">Pathfinding simulation in Go that moves ants through a colony in the fewest possible turns — solving graph traversal, flow optimization, and multi-path routing from scratch.</p>
@@ -953,6 +962,49 @@
     </div>
     <div class="modal-footer">
       <a href="https://github.com/AbdullaAlbahrani21/forum-image-upload" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Real-Time Forum -->
+<div class="modal-overlay" id="modal-realtimeforum" onclick="overlayClick(event, 'realtimeforum')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">Real-Time Forum</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('realtimeforum')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A real-time community forum designed for fast, interactive conversations. The experience focuses on live updates, instant feedback, and a smooth user flow for posting questions, replying, and following ongoing discussions.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Real-time messaging and live discussion updates</li>
+        <li>Clean forum layout for posting and replying instantly</li>
+        <li>Responsive design for desktop and mobile usage</li>
+        <li>Community-focused interaction flow with modern UI polish</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">HTML</span><span class="stack-tag">CSS</span><span class="stack-tag">JavaScript</span><span class="stack-tag">WebSockets</span><span class="stack-tag">Real-Time UI</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Real-time-forum.png" alt="Real-Time Forum interface screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/Real-time-forum2.png" alt="Real-Time Forum discussion view screenshot">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/real-time-forum" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
     </div>
   </div>
 </div>
