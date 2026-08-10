@@ -657,6 +657,15 @@
         </div>
         <button class="project-btn" onclick="openModal('goreloaded')">VIEW DETAILS →</button>
       </div>
+      <div class="project-card reboot">
+        <div class="project-marker">GQ</div>
+        <div class="project-name">GraphQL Profile</div>
+        <p class="project-desc">Single-page student profile dashboard for the Reboot01 platform — authenticates via JWT, queries a GraphQL API, and renders XP, level, and audit ratio with two hand-built SVG charts, no charting library.</p>
+        <div class="project-stack">
+          <span class="stack-tag">GraphQL</span><span class="stack-tag">JavaScript</span><span class="stack-tag">SVG</span><span class="stack-tag">JWT Auth</span>
+        </div>
+        <button class="project-btn" onclick="openModal('graphql')">VIEW DETAILS →</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1161,6 +1170,49 @@
     </div>
     <div class="modal-footer">
       <a href="https://github.com/AbdullaAlbahrani21/go-reloaded" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: GraphQL Profile -->
+<div class="modal-overlay" id="modal-graphql" onclick="overlayClick(event, 'graphql')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">GraphQL Profile</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('graphql')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A single-page student profile dashboard for the Reboot01 platform, built with plain HTML, CSS, and JavaScript (ES modules) — no frameworks, no build step. It signs in against the platform's authentication API, queries its GraphQL endpoint for the authenticated student's data, and renders XP, level, audit ratio, and project statistics, including two hand-built SVG charts with no charting library.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Login/logout — signs in via Basic auth, stores the returned JWT in localStorage, and clears it on logout or session expiry</li>
+        <li>Profile stats — total XP, current level, and audit ratio (audits given vs. received)</li>
+        <li>Cumulative XP chart — an SVG line chart of XP earned over time with hover/focus tooltips per transaction</li>
+        <li>XP by project chart — an SVG donut chart splitting total XP across top-earning projects, with the remainder grouped into an "Other" slice</li>
+        <li>Distinct loading, empty, and error states for every async operation, with friendly messages and retry options</li>
+        <li>Responsive and accessible — layouts collapse for small screens, charts scroll horizontally instead of shrinking illegibly, and page transitions move keyboard focus for screen readers</li>
+        <li>Combines three GraphQL query styles in one request: a normal query on <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">user</code>, an argument-based query on <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">transaction</code>, and a nested query joining <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">result</code> with <code style="font-family:var(--mono); font-size:12px; color:var(--accent)">object</code></li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">GraphQL</span><span class="stack-tag">Vanilla JavaScript (ES Modules)</span><span class="stack-tag">HTML5</span><span class="stack-tag">CSS3</span><span class="stack-tag">SVG</span><span class="stack-tag">JWT Auth</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/graphql.png" alt="GraphQL Profile dashboard screenshot">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/graphql" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
     </div>
   </div>
 </div>
