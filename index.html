@@ -666,6 +666,15 @@
         </div>
         <button class="project-btn" onclick="openModal('graphql')">VIEW DETAILS →</button>
       </div>
+      <div class="project-card reboot">
+        <div class="project-marker">SN</div>
+        <div class="project-name">Social Network</div>
+        <p class="project-desc">Facebook-style social network with public/private profiles, followers, posts with three privacy levels, groups, events, and real-time private and group chat with live notifications over WebSockets.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Go</span><span class="stack-tag">Vue 3</span><span class="stack-tag">SQLite</span><span class="stack-tag">WebSockets</span><span class="stack-tag">Docker</span>
+        </div>
+        <button class="project-btn" onclick="openModal('socialnetwork')">VIEW DETAILS →</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1213,6 +1222,58 @@
     </div>
     <div class="modal-footer">
       <a href="https://github.com/AbdullaAlbahrani21/graphql" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Social Network -->
+<div class="modal-overlay" id="modal-socialnetwork" onclick="overlayClick(event, 'socialnetwork')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <span class="modal-cat reboot">REBOOT</span>
+        <div class="modal-title">Social Network</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('socialnetwork')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section-title">OVERVIEW</div>
+      <p class="modal-desc">A Facebook-style social network built as a team project in the Reboot Full-Stack Program. A Go backend on the standard library's net/http serves a REST API and WebSocket hub over SQLite with embedded migrations, and a Vue 3 single-page app handles the interface. The whole stack ships with Docker Compose: the Go API runs in one container, and nginx serves the SPA and proxies API and WebSocket traffic from another.</p>
+
+      <div class="modal-section-title">KEY FEATURES</div>
+      <ul class="modal-features">
+        <li>Authentication with session cookies and bcrypt-hashed passwords</li>
+        <li>Public or private profiles with avatar, nickname, and "about me", plus follow requests that private-profile owners accept or decline</li>
+        <li>Text and image posts with three privacy levels (public, followers only, and selected followers), with comments and likes</li>
+        <li>Groups with invitations, join requests, group posts, and events that members RSVP to</li>
+        <li>Real-time private and group chat over WebSockets, with typing indicators and emoji</li>
+        <li>Live notifications for follow requests, group invitations, join requests, and new events</li>
+        <li>Relational SQLite schema with versioned migrations covering users, sessions, followers, posts, groups, events, and messages</li>
+      </ul>
+
+      <div class="modal-section-title">TECH STACK</div>
+      <div class="modal-stack">
+        <span class="stack-tag">Go</span><span class="stack-tag">SQLite</span><span class="stack-tag">Gorilla WebSocket</span><span class="stack-tag">Vue 3</span><span class="stack-tag">Pinia</span><span class="stack-tag">Vue Router</span><span class="stack-tag">Vite</span><span class="stack-tag">Docker Compose</span><span class="stack-tag">nginx</span>
+      </div>
+
+      <div class="modal-section-title">SCREENSHOTS</div>
+      <div class="screenshot-grid">
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/social-network2.png" alt="Social Network login screen screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/social-network1.png" alt="Social Network user profile with posts screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/social-network3.png" alt="Social Network groups page screenshot">
+        </div>
+        <div class="screenshot-slot">
+          <img class="screenshot-image" src="images/social-network4.png" alt="Social Network real-time chat screenshot">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="https://github.com/AbdullaAlbahrani21/social-network" target="_blank" class="btn-primary" style="font-size:11px; padding: 10px 22px;">VIEW ON GITHUB ↗</a>
     </div>
   </div>
 </div>
